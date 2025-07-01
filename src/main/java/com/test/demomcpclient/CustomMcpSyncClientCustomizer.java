@@ -16,7 +16,7 @@ public class CustomMcpSyncClientCustomizer implements McpSyncClientCustomizer {
     public void customize(String serverConfigurationName, McpClient.SyncSpec spec) {
         log.info("customize");
         // Customize the request timeout configuration
-        spec.requestTimeout(Duration.ofSeconds(30));
+        spec.requestTimeout(Duration.ofSeconds(60));
 
         // Sets the root URIs that this client can access.
         //spec.roots(roots);

@@ -18,22 +18,30 @@ public class McpClientApplication {
 
 	}
 
-	@Value(value = "Please search for \"climate change solutions\" and summarize the top results.")
+	//@Value(value = "Please search for \"climate change solutions\" and summarize the top results.")
+	@Value(value = "Please search for \"tomorrow weather in Los Angels \" and summarize the top results.")
 	private String userInput;
 
 	@Bean
 	public CommandLineRunner predefinedQuestions(ChatClient.Builder chatClientBuilder, ToolCallbackProvider tools,
 												 ConfigurableApplicationContext context) {
 		return args -> {
+			try {
+				var chatClient = chatClientBuilder
+						.defaultToolCallbacks(tools)
+						.build();
 
-			var chatClient = chatClientBuilder
-					.defaultToolCallbacks(tools)
-					.build();
+				System.out.println("\n>>> QUESTION: " + userInput);
 
-			System.out.println("\n>>> QUESTION: " + userInput);
-			System.out.println("\n>>> ASSISTANT: " + chatClient.prompt(userInput).call().content());
+				var response = chatClient.prompt(userInput).call();
+				System.out.println("\n>>> ASSISTANT: " + response.content());
 
-			context.close();
+			} catch (Exception e) {
+				System.err.println("Error occurred: " + e.getMessage());
+				e.printStackTrace();
+			} finally {
+				context.close();
+			}
 		};
 	}
 }
