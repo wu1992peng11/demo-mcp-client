@@ -1,0 +1,17 @@
+
+
+{
+  "mcpServers": {
+    "scrapelessMcpServer": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "scrapeless-mcp-server"
+      ],
+      "env": {
+        "SCRAPELESS_KEY": "sk_BLxHVxeW2Pu96Nojt12bdS0jCqa730ISSzzi0TsY0NKtQEhkeoaUh1G9DplSl1AV",
+        "MODE": "stdio"
+      }
+    }
+  }
+}
