@@ -14,7 +14,8 @@ import java.util.List;
 public class CustomMcpSyncClientCustomizer implements McpSyncClientCustomizer {
     @Override
     public void customize(String serverConfigurationName, McpClient.SyncSpec spec) {
-        log.info("customize");
+        //log.info("customize");
+        System.out.println("customize");
         // Customize the request timeout configuration
         spec.requestTimeout(Duration.ofSeconds(60));
 

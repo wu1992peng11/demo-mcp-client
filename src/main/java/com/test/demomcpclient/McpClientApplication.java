@@ -1,6 +1,12 @@
 package com.test.demomcpclient;
 
+import com.anthropic.client.AnthropicClient;
+import com.anthropic.client.okhttp.AnthropicOkHttpClient;
+import com.anthropic.models.messages.Message;
+import com.anthropic.models.messages.MessageCreateParams;
+import jakarta.annotation.PostConstruct;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.tool.ToolCallback;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,10 +25,10 @@ public class McpClientApplication {
 	}
 
 	//@Value(value = "Please search for \"climate change solutions\" and summarize the top results.")
-	@Value(value = "Please search for \"tomorrow weather in Los Angels \" and summarize the top results.")
+	@Value(value = "Please google-search for \"tomorrow weather in Los Angels \" ")
 	private String userInput;
 
-	@Bean
+	/*@Bean
 	public CommandLineRunner predefinedQuestions(ChatClient.Builder chatClientBuilder, ToolCallbackProvider tools,
 												 ConfigurableApplicationContext context) {
 		return args -> {
@@ -43,5 +49,7 @@ public class McpClientApplication {
 				context.close();
 			}
 		};
-	}
+	}*/
+
+
 }
